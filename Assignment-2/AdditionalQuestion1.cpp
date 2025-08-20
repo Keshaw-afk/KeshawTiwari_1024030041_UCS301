@@ -2,6 +2,9 @@
 #include <stdlib.h>
 // 1 <= n <= 1e9
 // 1<= a_i <= 1e9
+//Sample input for examiner
+// 5 1
+// 3 2 1 5 4
 
 void sort(int* arr, int size){
     for (int i = 0; i<size; i++){
