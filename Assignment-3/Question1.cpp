@@ -1,7 +1,6 @@
 #include <iostream>
 
-// Comments on isFull() method as demanded in question:
-// The following implementation is a resizable stack and it will never be full as long as the computer can provide memory.
+//Implementation of stack data structure with a maximum integer capacity of 100 elements. Implemented using array. 
 
 typedef struct Stack{
     int* arr;
@@ -17,7 +16,6 @@ typedef struct Stack{
     }
 } Stack;
 
-// void resizeStack(Stack* stack, int size);
 void push(Stack* stack, int item);
 int pop(Stack* stack);
 int isEmpty(Stack* stack);
@@ -46,33 +44,15 @@ void displayStack(Stack* stack){ std::cout << "-------" << std::endl;
 
 void push(Stack* stack, int item){
     stack->numberOfElements++;
-    // if (stack->numberOfElements == stack->size) resizeStack(stack, 2*stack->size);
     stack->arr[stack->numberOfElements-1] = item;
 }
 
 int pop(Stack* stack){
     int item = stack->arr[stack->numberOfElements-1]; 
     stack->numberOfElements--;
-    // if (stack->numberOfElements <= stack->size / 4){
-    //     resizeStack(stack, stack->size / 2);
-    // }
 
     return item;
 }
-
-// void resizeStack(Stack* stack, int size){
-//     int* arr = new int[size];
-//     for (int i = 0; i<size; i++){
-//         arr[i] = 0;
-//     }
-//     int numberOfElements = (size > stack->size) ? stack->size : size;
-//     for (int i = 0; i<numberOfElements; i++){
-//         arr[i] = stack->arr[i];
-//     }
-//     delete[] stack->arr;
-//     stack->arr = arr;
-//     stack->size = size;
-// };
 
 int main(){
     Stack stack; 
