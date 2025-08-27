@@ -8,7 +8,7 @@ typedef struct Stack{
     int numberOfElements;
     Stack(){
         arr = new int[100];
-        numberOfElements = 0;
+        numberOfElements = 0; //Linear space complexity 
         size = 100;
     }
     ~Stack(){
@@ -24,15 +24,15 @@ int peek(Stack* stack);
 int isFull(Stack* stack);
 
 int isFull(Stack* stack){
-    return (stack->numberOfElements == stack->size);
+    return (stack->numberOfElements == stack->size); //Constant time
 }
 
 int peek(Stack* stack){
-    return stack->arr[stack->numberOfElements-1];
+    return stack->arr[stack->numberOfElements-1]; //Constant time
 }
 
 int isEmpty(Stack* stack){
-    return stack->numberOfElements==0;
+    return stack->numberOfElements==0; //Constant time
 }
 
 void displayStack(Stack* stack){ std::cout << "-------" << std::endl;
@@ -40,16 +40,17 @@ void displayStack(Stack* stack){ std::cout << "-------" << std::endl;
         std::cout << "|  " << stack->arr[i] << "  |" << std::endl;
     }
     std::cout << "-------" << std::endl;
+    //Linear time complexity
 }
 
 void push(Stack* stack, int item){
     stack->numberOfElements++;
-    stack->arr[stack->numberOfElements-1] = item;
+    stack->arr[stack->numberOfElements-1] = item; // Constant time and space complexity
 }
 
 int pop(Stack* stack){
     int item = stack->arr[stack->numberOfElements-1]; 
-    stack->numberOfElements--;
+    stack->numberOfElements--; //Constant time and space
 
     return item;
 }
