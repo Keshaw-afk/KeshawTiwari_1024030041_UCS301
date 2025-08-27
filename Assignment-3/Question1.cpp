@@ -8,21 +8,26 @@ typedef struct Stack{
     int size;
     int numberOfElements;
     Stack(){
-        arr = new int[1];
+        arr = new int[100];
         numberOfElements = 0;
-        size = 1;
+        size = 100;
     }
     ~Stack(){
         delete[] arr;
     }
 } Stack;
 
-void resizeStack(Stack* stack, int size);
+// void resizeStack(Stack* stack, int size);
 void push(Stack* stack, int item);
 int pop(Stack* stack);
 int isEmpty(Stack* stack);
 void displayStack(Stack* stack);
 int peek(Stack* stack);
+int isFull(Stack* stack);
+
+int isFull(Stack* stack){
+    return (stack->numberOfElements == stack->size);
+}
 
 int peek(Stack* stack){
     return stack->arr[stack->numberOfElements-1];
@@ -41,33 +46,33 @@ void displayStack(Stack* stack){ std::cout << "-------" << std::endl;
 
 void push(Stack* stack, int item){
     stack->numberOfElements++;
-    if (stack->numberOfElements == stack->size) resizeStack(stack, 2*stack->size);
+    // if (stack->numberOfElements == stack->size) resizeStack(stack, 2*stack->size);
     stack->arr[stack->numberOfElements-1] = item;
 }
 
 int pop(Stack* stack){
     int item = stack->arr[stack->numberOfElements-1]; 
     stack->numberOfElements--;
-    if (stack->numberOfElements <= stack->size / 4){
-        resizeStack(stack, stack->size / 2);
-    }
+    // if (stack->numberOfElements <= stack->size / 4){
+    //     resizeStack(stack, stack->size / 2);
+    // }
 
     return item;
 }
 
-void resizeStack(Stack* stack, int size){
-    int* arr = new int[size];
-    for (int i = 0; i<size; i++){
-        arr[i] = 0;
-    }
-    int numberOfElements = (size > stack->size) ? stack->size : size;
-    for (int i = 0; i<numberOfElements; i++){
-        arr[i] = stack->arr[i];
-    }
-    delete[] stack->arr;
-    stack->arr = arr;
-    stack->size = size;
-};
+// void resizeStack(Stack* stack, int size){
+//     int* arr = new int[size];
+//     for (int i = 0; i<size; i++){
+//         arr[i] = 0;
+//     }
+//     int numberOfElements = (size > stack->size) ? stack->size : size;
+//     for (int i = 0; i<numberOfElements; i++){
+//         arr[i] = stack->arr[i];
+//     }
+//     delete[] stack->arr;
+//     stack->arr = arr;
+//     stack->size = size;
+// };
 
 int main(){
     Stack stack; 
